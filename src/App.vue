@@ -3,19 +3,7 @@ import { ref } from 'vue'
 import Form from './components/FormComponent.vue'
 import ShowForm from './components/ShowForm.vue'
 
-const dados = ref({
-  nome: '',
-  email: '',
-  senha: '',
-  confSenha: '',
-  nascimento: '',
-  endereco: '',
-  cidade: '',
-  estado: '',
-  hobbie: [],
-  linguagensProg: [],
-  biografia: ''
-})
+const dados = ref({})
 
 const hobbiesUsuario = [
   { nome: 'Dança' },
@@ -67,15 +55,18 @@ function mostrarResultado() {
   resultado.value = true
 }
 const data = ref('')
-function confirmSenha() {
-  if (dados.value.confSenha == dados.value.senha) {
-    mostrarResultado
-    data.value =
-      dados.value.nascimento.slice(8, 11) +
+function confirmSenha(dataForm) {
+  if (dataForm.confSenha == dataForm.senha) {
+    mostrarResultado()
+
+    dataForm.data =
+      dataForm.nascimento.slice(8, 11) +
       '/' +
-      dados.value.nascimento.slice(5, 7) +
+      dataForm.nascimento.slice(5, 7) +
       '/' +
-      dados.value.nascimento.slice(0, 4)
+      dataForm.nascimento.slice(0, 4)
+
+    data.value = dataForm
   } else {
     alert('As senhas informadas não são iguais!')
   }
@@ -87,8 +78,7 @@ function confirmSenha() {
   <header>
     <h1>Formulário</h1>
   </header>
-  <Form :dados="dados" :estados="estadosOpcoes" :hobbies="hobbiesUsuario" :progUsuario="progUsuario" />
-  <ShowForm :resultado="resultado" :confirmSenha="confirmSenha"
-  :mostrarResultado="mostrarResultado"/>
+  <Form @submit="confirmSenha" :dados="dados" :estados="estadosOpcoes" :hobbies="hobbiesUsuario" :progUsuario="progUsuario" />
+  <ShowForm v-if="resultado" :dados="data" />
 </template>
 

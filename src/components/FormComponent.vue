@@ -19,15 +19,21 @@ const props = defineProps({
     required: true
   }
 })
-const dadoscopy = ref({ ...props.dados })
+
+const dadoscopy = ref({
+  ...props.dados
+})
 </script>
 <template>
-  <form>
+  <form @submit.prevent="$emit('submit', dadoscopy)">
     <label for="dados.nome">Nome: </label>
     <input type="text" v-model="dadoscopy.nome" required />
     <hr />
     <label for="dados.email">E-mail: </label>
     <input type="email" v-model="dadoscopy.email" />
+    <hr />
+    <label for="dados.nascimento">Nascimento:</label>
+    <input type="date" v-model="dadoscopy.nascimento">
     <hr />
     <label for="dados.senha">Senha: </label>
     <input type="password" v-model="dadoscopy.senha" />
