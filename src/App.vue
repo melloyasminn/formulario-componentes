@@ -1,7 +1,8 @@
 <script setup>
 import { ref } from 'vue'
-import Form from './components/Form.vue'
+import Form from './components/FormComponent.vue'
 import ShowForm from './components/ShowForm.vue'
+
 const dados = ref({
   nome: '',
   email: '',
@@ -31,7 +32,7 @@ const progUsuario = [
   { nome: 'C++' }
 ]
 
-const estados = [
+const estadosOpcoes = [
   { sigla: 'AC', nomeEstados: 'Acre' },
   { sigla: 'AL', nomeEstados: 'Alagoas' },
   { sigla: 'AP', nomeEstados: 'Amapá' },
@@ -61,30 +62,33 @@ const estados = [
   { sigla: 'TO', nomeEstados: 'Tocantins' }
 ]
 
+const resultado = ref(false)
+function mostrarResultado() {
+  resultado.value = true
+}
+const data = ref('')
+function confirmSenha() {
+  if (dados.value.confSenha == dados.value.senha) {
+    mostrarResultado
+    data.value =
+      dados.value.nascimento.slice(8, 11) +
+      '/' +
+      dados.value.nascimento.slice(5, 7) +
+      '/' +
+      dados.value.nascimento.slice(0, 4)
+  } else {
+    alert('As senhas informadas não são iguais!')
+  }
+}
+
 </script>
 
 <template>
   <header>
-      <h1>Formulário</h1>
+    <h1>Formulário</h1>
   </header>
-
-  <Form :dados="dados" />
+  <Form :dados="dados" :estados="estadosOpcoes" :hobbies="hobbiesUsuario" :progUsuario="progUsuario" />
+  <ShowForm :resultado="resultado" :confirmSenha="confirmSenha"
+  :mostrarResultado="mostrarResultado"/>
 </template>
 
-<style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-
-h1 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 50%;
-  margin: 0;
-  text-align: left;
-  padding: 0;
-}
-header{
-padding: 0;
-  background: #a1a1a1;
-}
-</style>

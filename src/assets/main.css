@@ -1,35 +1,48 @@
 @import './base.css';
-
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+header {
+  margin: 0%;
+  padding: 10px;
+  background: #9b9b9b;
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
+form {
+  padding: 30px;
+  margin-top: 5%;
+  margin-left: 30%;
+  margin-right: 30%;
+  background: #b6b6b6;
+  border-radius: 10px;
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
+input {
+  border-radius: 8px;
+  margin-left: 2%;
+  background: #dfdfdf;
+  border: white;
 }
 
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
+section {
+  padding: 20px;
+  margin: 8%;
+  background: #575656;
+  border-radius: 10px;
+  color: white;
+}
 
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
+button {
+  border: white;
+  padding: 1%;
+  border-radius: 8px;
+}
+
+h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 400%;
+  text-align: left;
+  padding: 0%;
+  margin-left: 2%;
+  color: white;
 }
