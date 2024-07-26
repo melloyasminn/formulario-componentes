@@ -51,34 +51,32 @@ const estadosOpcoes = [
 ]
 
 const resultado = ref(false)
-function mostrarResultado() {
-  resultado.value = true
-}
+
 const data = ref('')
-function confirmSenha(dataForm) {
-  if (dataForm.confSenha == dataForm.senha) {
-    mostrarResultado()
 
-    dataForm.data =
-      dataForm.nascimento.slice(8, 11) +
-      '/' +
-      dataForm.nascimento.slice(5, 7) +
-      '/' +
-      dataForm.nascimento.slice(0, 4)
+const dadosUsuario = ref('')
 
-    data.value = dataForm
+function enviarTeste(item) {
+  if (item.confirmSenha == item.senha) {
+    dadosUsuario.value = item
+    resultado.value = true
   } else {
     alert('As senhas informadas não são iguais!')
   }
 }
-
 </script>
 
 <template>
   <header>
     <h1>Formulário</h1>
   </header>
-  <Form @submit="confirmSenha" :dados="dados" :estados="estadosOpcoes" :hobbies="hobbiesUsuario" :progUsuario="progUsuario" />
-  <ShowForm v-if="resultado" :dados="data" />
+  <Form
+    :estados="estadosOpcoes"
+    :hobbies="hobbiesUsuario"
+    :progUsuario="progUsuario"
+    @enviar="enviarTeste"
+  />
+  <div v-if="resultado">
+    <ShowForm :dados="dadosUsuario" :resultado="true" :data="data" />
+  </div>
 </template>
-

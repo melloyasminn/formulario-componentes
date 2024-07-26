@@ -3,7 +3,7 @@
 header {
   margin: 0%;
   padding: 10px;
-  background: #9b9b9b;
+  background:  #b6b6b6;
 }
 
 form {
@@ -12,28 +12,32 @@ form {
   margin-left: 30%;
   margin-right: 30%;
   background: #b6b6b6;
-  border-radius: 10px;
+  border-radius: 4px;
+  color: rgb(32, 32, 32);
 }
 
 input {
-  border-radius: 8px;
+  border-radius: 4px;
   margin-left: 2%;
-  background: #dfdfdf;
-  border: white;
+  background: #f5f5f5;
+  border: none;
 }
 
 section {
-  padding: 20px;
-  margin: 8%;
-  background: #575656;
-  border-radius: 10px;
+  padding: 30px;
+  margin-top: 4%;
+  margin-left: 30%;
+  margin-right: 30%;
+  background: #7e7777;
+  border-radius: 4px;
   color: white;
 }
 
 button {
-  border: white;
-  padding: 1%;
-  border-radius: 8px;
+  border: rgb(94, 93, 93);
+  padding: 1.5%;
+  border-radius: 2px;
+  margin-top: 4%;
 }
 
 h1 {
